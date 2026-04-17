@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-
-class GamePanel extends JPanel implements ActionListener  {
+class GamePanel extends JPanel implements ActionListener {
 
     private final int SIZE = 20;
     private final int WIDTH = 600;
@@ -33,7 +32,7 @@ class GamePanel extends JPanel implements ActionListener  {
         timer = new Timer(120, this);
         timer.start();
 
-        addKeyListener(new KeyAdapter(){
+        addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP: if (direction != 'D') direction = 'U'; break;
@@ -115,9 +114,10 @@ class GamePanel extends JPanel implements ActionListener  {
     private void checkCollision() {
         Point head = snake.get(0);
 
-        if (head.x < 0 || head.y < 0 || head.x >= WIDTH / SIZE || head.y >= HEIGHT /  SIZE) {
+        if (head.x < 0 || head.y < 0 || head.x >= WIDTH / SIZE || head.y >= HEIGHT / SIZE) {
             endGame();
         }
+
         for (int i = 1; i < snake.size(); i++) {
             if (head.equals(snake.get(i))) {
                 endGame();
@@ -129,7 +129,7 @@ class GamePanel extends JPanel implements ActionListener  {
         running = false;
         timer.stop();
 
-        String player = JOptionPane.showInputDialog("nombre del JUGADOR:");
-                ScoreDAO.saveScore(player, score);
+        String player = JOptionPane.showInputDialog("Nombre del jugador:");
+        ScoreDAO.saveScore(player, score);
     }
 }
