@@ -12,6 +12,6 @@ public class DBConnection {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         return DriverManager.getConnection(url, user, pass);
     }
-}   
+}
 
 
